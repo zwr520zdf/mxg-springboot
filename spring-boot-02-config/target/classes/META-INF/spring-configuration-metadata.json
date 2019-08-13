@@ -1,0 +1,53 @@
+{
+  "groups": [
+    {
+      "name": "emp",
+      "type": "com.mengxuegu.springboot.bean.Emp",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    }
+  ],
+  "properties": [
+    {
+      "name": "emp.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    },
+    {
+      "name": "emp.birthday",
+      "type": "java.util.Date",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    },
+    {
+      "name": "emp.boss",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    },
+    {
+      "name": "emp.forte",
+      "type": "com.mengxuegu.springboot.bean.Forte",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    },
+    {
+      "name": "emp.last-name",
+      "type": "java.lang.String",
+      "description": "类似spring中使用配置文件中的数据注入方式 <bean class=\"emp\">      <property name=\"lastName\" value=\"字面量\/#{SpEl} spring表达式\/${key}从配置文件获取\"><\/property>  <\/bean>",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    },
+    {
+      "name": "emp.list",
+      "type": "java.util.List",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    },
+    {
+      "name": "emp.map",
+      "type": "java.util.Map",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    },
+    {
+      "name": "emp.salary",
+      "type": "java.lang.Double",
+      "sourceType": "com.mengxuegu.springboot.bean.Emp"
+    }
+  ],
+  "hints": []
+}

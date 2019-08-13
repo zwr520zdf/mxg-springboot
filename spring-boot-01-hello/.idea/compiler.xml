@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="spring-boot-01-hello" />
+        <module name="spring-boot-01-init-02" />
+        <module name="spring-boot-02-config" />
+        <module name="spring-boot-02-config-02" />
+        <module name="spring-boot-04-web" />
+        <module name="spring-boot-logging" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

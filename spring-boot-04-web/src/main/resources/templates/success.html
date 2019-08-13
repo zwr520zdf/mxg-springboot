@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+</head>
+<body>
+    <textarea>撒撒大撒大撒大撒大撒</textarea>
+    <p th:text="${name}">名称</p>
+    <div th:replace="public :: #headers"></div>
+    <hr/>
+    <div th:replace="public :: header_common"></div>
+    <hr/>
+    <table border="2px">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+        </tr>
+        <tr th:each="user , iterStatus : ${studentList}">
+            <td th:text="${iterStatus.count}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.old}"></td>
+            <td th:text="${user.sex == 1 ? '男' : (user.sex == 0 ? '女' : '无')}"></td>
+        </tr>
+    </table>
+    <div>热部署123</div>
+    <div th:text="${desc}"></div>
+    <div th:utext="${desc}">dd</div>
+</body>
+</html>
