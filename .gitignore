@@ -1,7 +1,7 @@
 */.settings/
 */.svn/
-*/target/
 */.classpath
 */.project
 .idea/
 .mvn/
+spring-boot-05-bill/target/classes/templates/main/index.html
