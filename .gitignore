@@ -5,3 +5,4 @@
 .idea/
 .mvn/
 spring-boot-05-bill/target/classes/templates/main/index.html
+/target/
