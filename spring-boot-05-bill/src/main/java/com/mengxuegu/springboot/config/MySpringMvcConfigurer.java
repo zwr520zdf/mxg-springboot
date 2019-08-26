@@ -10,32 +10,31 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * 自定义配置类
- *
- * @Configuration 进行标识
+ * @Auther: 梦学谷
  */
 @Configuration
 public class MySpringMvcConfigurer {
 
-    //  @Bean纳入容器中
     @Bean
     public WebMvcConfigurer webMvcConfigurer() {
-        return new WebMvcConfigurer() {
+        return new WebMvcConfigurer(){
+            //添加视图控制
             @Override
             public void addViewControllers(ViewControllerRegistry registry) {
-                //这里main前面不要加/否则打包会出错
                 registry.addViewController("/").setViewName("main/login");
                 registry.addViewController("/index.html").setViewName("main/login");
                 registry.addViewController("/main.html").setViewName("main/index");
             }
 
-            //添加拦截器注册到容器中
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new LoginHandlerInterceptor())
-                        .addPathPatterns("/**")     //指定拦截请求 /**表示拦截所有请求
-                        .excludePathPatterns("/","/index.html","/login")    //排除不需要拦截的路径
-                        .excludePathPatterns("/css/*","/img/*","/js/*"); //springboot2.0后需要手动排除静态资源的拦截
+                        //指定要拦截的请求 /** 表示拦截所有请求
+                        .addPathPatterns("/**")
+                        //排除不需要拦截的请求路径
+                        .excludePathPatterns("/", "/index.html", "/login")
+                        //springboot2+之后需要将静态资源文件的访问路径 也排除
+                        .excludePathPatterns("/css/*", "/img/*","/js/*");
             }
         };
     }
@@ -45,4 +44,6 @@ public class MySpringMvcConfigurer {
     public LocaleResolver localeResolver() {
         return new MyLocaleResolver();
     }
+
+
 }

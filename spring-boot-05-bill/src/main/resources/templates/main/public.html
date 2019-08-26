@@ -11,8 +11,8 @@
 <header class="publicHeader" id="public_header">
     <h1>梦学谷账单管理系统</h1>
 
-    <div class="publicHeaderR">
-        <p><span>下午好！</span><span style="color: #fff21b"> Admin</span> , 欢迎你！</p>
+    <div class="publicHeaderR">         <!--[[${session.loginUser}]]行内表达式-->
+        <p><span>下午好！</span><span style="color: #fff21b"> [[${session.loginUser}]]</span> , 欢迎你！</p>
         <a href="../main/login.html">退出</a>
     </div>
 </header>
