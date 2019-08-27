@@ -33,12 +33,31 @@ public class ProviderController {
         return "provider/list";
     }
 
+    /**
+     *  type默认为view，
+     *  type=null进入provider下的view.html页面
+     *  type=update进入provider下的update.html页面
+     * @param pid
+     * @param type
+     * @param map
+     * @return
+     */
     @GetMapping("/provider/{pid}")
-    public String view(@PathVariable(value = "pid") Integer pid,Map<String,Object> map){
+    public String view(@PathVariable(value = "pid") Integer pid,
+                       @RequestParam(value = "type",defaultValue = "view") String type,
+                       Map<String,Object> map){
         logger.info("查询pid："+pid+"供应商的详情");
         Provider provider = providerDao.getProvider(pid);
         map.put("provider",provider);
-        return "provider/view";
+        return "provider/"+type;
+    }
+
+
+    @PutMapping("/provider")
+    public String update(Provider provider){
+        logger.info("更新供应商..");
+        providerDao.save(provider);
+        return "redirect:providers";
     }
 
 }
