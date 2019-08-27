@@ -68,7 +68,7 @@ public class ProviderController {
     public String update(Provider provider){
         logger.info("更新供应商..");
         providerDao.save(provider);
-        return "redirect:providers";
+        return "redirect:/providers";
     }
 
     /**
@@ -89,6 +89,19 @@ public class ProviderController {
     public String addProvider(Provider provider){
         logger.info("添加供应商："+provider);
         providerDao.save(provider);
-        return "redirect:providers";
+        return "redirect:/providers";
+    }
+
+    /**
+     * 删除供应商
+     * @param pid
+     * @return
+     */
+    @DeleteMapping("/provider/{pid}")
+    public String delete(@PathVariable(value = "pid") Integer pid){
+        logger.info("删除供应商:"+pid);
+        providerDao.delete(pid);
+        logger.info("删除成功");
+        return "redirect:/providers";
     }
 }
