@@ -22,7 +22,13 @@ public class ProviderController {
     @Autowired
     ProviderDao providerDao;
 
-    // @RequestParam(value = "providerName",required = false) 不是必须参数
+    /**
+     * 查询所有供应商
+     * @param map
+     * @param providerName
+     * @RequestParam(value = "providerName",required = false) 不是必须参数
+     * @return
+     */
     @GetMapping(value = "/providers")
     public String list(Map<String,Object> map,
                        @RequestParam(value = "providerName",required = false) String providerName){
@@ -34,6 +40,7 @@ public class ProviderController {
     }
 
     /**
+     * 查询指定供应商
      *  type默认为view，
      *  type=null进入provider下的view.html页面
      *  type=update进入provider下的update.html页面
@@ -52,7 +59,11 @@ public class ProviderController {
         return "provider/"+type;
     }
 
-
+    /**
+     * 更新供应商
+     * @param provider
+     * @return
+     */
     @PutMapping("/provider")
     public String update(Provider provider){
         logger.info("更新供应商..");
@@ -60,4 +71,24 @@ public class ProviderController {
         return "redirect:providers";
     }
 
+    /**
+     * 进入供应商添加页面
+     * @return
+     */
+    @GetMapping("/provider")
+    public String toAddPage(){
+        return "provider/add";
+    }
+
+    /**
+     * 添加供应商
+     * @param provider
+     * @return
+     */
+    @PostMapping("/provider")
+    public String addProvider(Provider provider){
+        logger.info("添加供应商："+provider);
+        providerDao.save(provider);
+        return "redirect:providers";
+    }
 }
