@@ -104,4 +104,13 @@ public class ProviderController {
         logger.info("删除成功");
         return "redirect:/providers";
     }
+
+    //测试500
+    @GetMapping("/bills")
+    public void bill(){
+        int i = 0;
+        if(i==0){
+            throw new RuntimeException("i不能为0");
+        }
+    }
 }
