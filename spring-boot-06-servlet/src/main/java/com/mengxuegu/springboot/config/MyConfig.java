@@ -3,9 +3,12 @@ package com.mengxuegu.springboot.config;
 import com.mengxuegu.springboot.filter.MyFilter;
 import com.mengxuegu.springboot.listener.Mylistener;
 import com.mengxuegu.springboot.serlvet.HelloServlet;
+import org.springframework.boot.web.server.WebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
+import org.springframework.boot.web.servlet.server.ConfigurableServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -55,5 +58,25 @@ public class MyConfig {
                 = new ServletListenerRegistrationBean(new Mylistener());
 
         return bean;
+    }
+
+    /**
+     * 注册定制器
+     * @return
+     */
+    @Bean
+    public WebServerFactoryCustomizer webServerFactoryCustomizer(){
+        return  new WebServerFactoryCustomizer() {
+            @Override
+            public void customize(WebServerFactory factory) {
+                //强类型转换相应接口,进行修改相关配置，
+                // 如果自定义定制和配置文件冲突，默认采用定制器
+                ConfigurableServletWebServerFactory serverFactory
+                        = (ConfigurableServletWebServerFactory) factory;
+                serverFactory.setPort(8085);
+                serverFactory.setContextPath("/dz");
+            }
+        };
+
     }
 }
